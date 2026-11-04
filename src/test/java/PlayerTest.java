@@ -3,7 +3,6 @@ import enums.ClassType;
 import enums.Race;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 public class PlayerTest {
@@ -13,7 +12,6 @@ public class PlayerTest {
     Player humanRanger = new Player("Test_Ranger", Race.HUMAN, ClassType.RANGER);
 
     @Test
-    @Before
     public void givenPlayerDamage_WhenAttacked_thenReturnCurrentHealthAfter() {
         humanMage.takeDamage(15);
         humanWarrior.takeDamage(15);
