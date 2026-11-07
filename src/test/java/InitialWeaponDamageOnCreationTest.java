@@ -9,7 +9,7 @@ public class InitialWeaponDamageOnCreationTest {
 
     @Test
     public void givenCommonSword_WhenSpawned_ThenCorrectDamage() {
-        Weapon weaponSword = new Weapon("Test Sword", ItemRarity.COMMON, WeaponType.SWORD);
+        Weapon weaponSword = new Weapon("Test Sword", ItemRarity.COMMON, WeaponType.SWORD, "Test");
         int actualDamage = weaponSword.weaponDamage();
         int expectedDamage = 5;
         Assert.assertEquals(expectedDamage, actualDamage);
@@ -17,7 +17,7 @@ public class InitialWeaponDamageOnCreationTest {
 
     @Test
     public void givenUncommonSword_WhenSpawned_ThenCorrectDamage() {
-        Weapon weaponSword = new Weapon("Test Sword", ItemRarity.UNCOMMON, WeaponType.SWORD);
+        Weapon weaponSword = new Weapon("Test Sword", ItemRarity.UNCOMMON, WeaponType.SWORD, "Test");
         int actualDamage = weaponSword.weaponDamage();
         int expectedDamage = 6;
         Assert.assertEquals(expectedDamage, actualDamage);
@@ -25,7 +25,7 @@ public class InitialWeaponDamageOnCreationTest {
 
     @Test
     public void givenRareSword_WhenSpawned_ThenCorrectDamage() {
-        Weapon weaponSword = new Weapon("Test Sword", ItemRarity.RARE, WeaponType.SWORD);
+        Weapon weaponSword = new Weapon("Test Sword", ItemRarity.RARE, WeaponType.SWORD, "Test");
         int actualDamage = weaponSword.weaponDamage();
         int expectedDamage = 7;
         Assert.assertEquals(expectedDamage, actualDamage);
@@ -33,7 +33,7 @@ public class InitialWeaponDamageOnCreationTest {
 
     @Test
     public void givenLegendarySword_WhenSpawned_ThenCorrectDamage() {
-        Weapon weaponSword = new Weapon("Test Sword", ItemRarity.LEGENDARY, WeaponType.SWORD);
+        Weapon weaponSword = new Weapon("Test Sword", ItemRarity.LEGENDARY, WeaponType.SWORD, "Test");
         int actualDamage = weaponSword.weaponDamage();
         int expectedDamage = 8;
         Assert.assertEquals(expectedDamage, actualDamage);
@@ -41,7 +41,7 @@ public class InitialWeaponDamageOnCreationTest {
 
     @Test
     public void givenCommonAxe_WhenSpawned_ThenCorrectDamage() {
-        Weapon weaponAxe = new Weapon("Test Axe", ItemRarity.COMMON, WeaponType.AXE);
+        Weapon weaponAxe = new Weapon("Test Axe", ItemRarity.COMMON, WeaponType.AXE, "Test");
         int actualDamage = weaponAxe.weaponDamage();
         int expectedDamage = 3;
         Assert.assertEquals(expectedDamage, actualDamage);
@@ -49,7 +49,7 @@ public class InitialWeaponDamageOnCreationTest {
 
     @Test
     public void givenUncommonAxe_WhenSpawned_ThenCorrectDamage() {
-        Weapon weaponAxe = new Weapon("Test Axe", ItemRarity.UNCOMMON, WeaponType.AXE);
+        Weapon weaponAxe = new Weapon("Test Axe", ItemRarity.UNCOMMON, WeaponType.AXE, "Test");
         int actualDamage = weaponAxe.weaponDamage();
         int expectedDamage = 4;
         Assert.assertEquals(expectedDamage, actualDamage);
@@ -57,7 +57,7 @@ public class InitialWeaponDamageOnCreationTest {
 
     @Test
     public void givenRareAxe_WhenSpawned_ThenCorrectDamage() {
-        Weapon weaponAxe = new Weapon("Test Axe", ItemRarity.RARE, WeaponType.AXE);
+        Weapon weaponAxe = new Weapon("Test Axe", ItemRarity.RARE, WeaponType.AXE, "Test");
         int actualDamage = weaponAxe.weaponDamage();
         int expectedDamage = 5;
         Assert.assertEquals(expectedDamage, actualDamage);
@@ -65,7 +65,7 @@ public class InitialWeaponDamageOnCreationTest {
 
     @Test
     public void givenLegendaryAxe_WhenSpawned_ThenCorrectDamage() {
-        Weapon weaponAxe = new Weapon("Test Axe", ItemRarity.LEGENDARY, WeaponType.AXE);
+        Weapon weaponAxe = new Weapon("Test Axe", ItemRarity.LEGENDARY, WeaponType.AXE, "Test");
         int actualDamage = weaponAxe.weaponDamage();
         int expectedDamage = 6;
         Assert.assertEquals(expectedDamage, actualDamage);
@@ -73,7 +73,7 @@ public class InitialWeaponDamageOnCreationTest {
 
     @Test
     public void givenCommonBow_WhenSpawned_ThenCorrectDamage() {
-        Weapon weaponBow = new Weapon("Test Bow", ItemRarity.COMMON, WeaponType.BOW);
+        Weapon weaponBow = new Weapon("Test Bow", ItemRarity.COMMON, WeaponType.BOW, "Test");
         int actualDamage = weaponBow.weaponDamage();
         int expectedDamage = 4;
         Assert.assertEquals(expectedDamage, actualDamage);
@@ -81,7 +81,7 @@ public class InitialWeaponDamageOnCreationTest {
 
     @Test
     public void givenUncommonBow_WhenSpawned_ThenCorrectDamage() {
-        Weapon weaponBow = new Weapon("Test Bow", ItemRarity.UNCOMMON, WeaponType.BOW);
+        Weapon weaponBow = new Weapon("Test Bow", ItemRarity.UNCOMMON, WeaponType.BOW, "Test");
         int actualDamage = weaponBow.weaponDamage();
         int expectedDamage = 5;
         Assert.assertEquals(expectedDamage, actualDamage);
@@ -89,7 +89,7 @@ public class InitialWeaponDamageOnCreationTest {
 
     @Test
     public void givenRareBow_WhenSpawned_ThenCorrectDamage() {
-        Weapon weaponBow = new Weapon("Test Bow", ItemRarity.RARE, WeaponType.BOW);
+        Weapon weaponBow = new Weapon("Test Bow", ItemRarity.RARE, WeaponType.BOW, "Test");
         int actualDamage = weaponBow.weaponDamage();
         int expectedDamage = 6;
         Assert.assertEquals(expectedDamage, actualDamage);
@@ -97,7 +97,7 @@ public class InitialWeaponDamageOnCreationTest {
 
     @Test
     public void givenLegendaryBow_WhenSpawned_ThenCorrectDamage() {
-        Weapon weaponBow = new Weapon("Test Bow", ItemRarity.LEGENDARY, WeaponType.BOW);
+        Weapon weaponBow = new Weapon("Test Bow", ItemRarity.LEGENDARY, WeaponType.BOW, "Test");
         int actualDamage = weaponBow.weaponDamage();
         int expectedDamage = 7;
         Assert.assertEquals(expectedDamage, actualDamage);
