@@ -17,19 +17,12 @@ public class Main {
         System.out.print("Enter your name: ");
         playerName = scanner.nextLine();
 
+        Weapon weapon = new Weapon("Sword_1", RARE, SWORD, "Tester");
         Player player = new Player(playerName, HUMAN, MAGE);
-        Weapon weapon = new Weapon("SD", RARE, SWORD);
 
-        String example = player.getName() + ", a " +
-                player.getRace() + " " + player.getClassType() + ", has " +
-                player.getMaxHealth() + " HP and " + player.getMaxStamina() + " stamina points." +
-                " They have " + player.getBaseDefense() + " defense.";
+        player.takeDamage(weapon.weaponDamage());
 
-        System.out.println(example);
-
-        player.takeDamage(15);
-
-        System.out.println(player);
+        System.out.println(player.playerStats());
 
         System.out.println(player.getName() + " was hit, health now " + player.getCurrentHealth());
 
@@ -41,11 +34,10 @@ public class Main {
 
         System.out.println(player.getCurrentHealth());
 
-
         System.out.println(player);
 
-        System.out.println(player.equals(new Player("bill", HUMAN, MAGE)));
-
         System.out.println(weapon.weaponDamage());
+
+        System.out.println(player.playerStats());
     }
 }
