@@ -10,6 +10,10 @@ public enum ClassType {
     private final int startingMana;
     private final int startingStamina;
 
+
+    /*
+     * Returns the type of class that the @Entity is
+     */
     ClassType(String className, int startingHealth, int startingMana, int startingStamina) {
         this.className = className;
         this.startingHealth = startingHealth;
