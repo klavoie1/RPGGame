@@ -8,6 +8,9 @@ public class Player extends Entity {
          super(name, race, classType);
      }
 
+    /**
+     * @return Statistics menu for the player character
+     */
      public String playerStats() {
          return (
                  "-------------------------\n" +

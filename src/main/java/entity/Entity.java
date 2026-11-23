@@ -84,9 +84,7 @@ public abstract class Entity {
         this.currentMana = Math.clamp(currentMana, 0, maxMana);
     }
 
-    private void setCurrentStamina(int currentStamina) {
-        this.currentStamina = Math.clamp(currentStamina, 0, maxStamina);
-    }
+    private void setCurrentStamina(int currentStamina) { this.currentStamina = Math.clamp(currentStamina, 0, maxStamina); }
 
     private void setMaxHealth(int maxHealth) {
         this.maxHealth = maxHealth;
@@ -115,8 +113,11 @@ public abstract class Entity {
         } else setCurrentHealth(amount + currentHealth);
     }
 
-    // Death method to keep track of Entities dead or not. Once an entity reaches currentHealth 0, then they are dead.
-    // Something like the undead are considered "alive" by the backend, so they're not dead until currentHealth this 0.
+    /**
+     * Death method to keep track of Entities dead or not. Once an entity reaches currentHealth 0, then they are dead.
+     * Something like the undead are considered "alive" by the backend, so they're not dead until currentHealth this 0.
+     * @return false unless {@code entity.getCurrentHealth() == 0}
+     */
     public boolean isDead() {
         return currentHealth == 0;
     }

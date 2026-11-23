@@ -4,11 +4,11 @@ import item.Weapon;
 import java.util.Scanner;
 
 import static enums.ClassType.MAGE;
-import static enums.ItemRarity.RARE;
+import static enums.ItemRarity.COMMON;
 import static enums.Race.HUMAN;
 import static enums.WeaponType.SWORD;
 
-public class Main {
+class Main {
     public static void main(String[] args) {
 
         String playerName;
@@ -17,7 +17,7 @@ public class Main {
         System.out.print("Enter your name: ");
         playerName = scanner.nextLine();
 
-        Weapon weapon = new Weapon("Sword_1", RARE, SWORD, "Tester");
+        Weapon weapon = new Weapon("Sword_1", COMMON, SWORD, "1");
         Player player = new Player(playerName, HUMAN, MAGE);
 
         player.takeDamage(weapon.weaponDamage());
@@ -32,12 +32,16 @@ public class Main {
 
         player.heal(10);
 
-        System.out.println(player.getCurrentHealth());
-
         System.out.println(player);
 
         System.out.println(weapon.weaponDamage());
 
         System.out.println(player.playerStats());
+
+        System.out.println(weapon.toString());
+
+        weapon.givePlayerSwordNameFromPlayer();
+
+        System.out.println(weapon.toString());
     }
 }
