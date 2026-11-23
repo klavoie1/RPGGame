@@ -3,8 +3,6 @@ package entity;
 import enums.ClassType;
 import enums.Race;
 
-import java.util.Objects;
-
 public abstract class Entity {
 
     private final String name;

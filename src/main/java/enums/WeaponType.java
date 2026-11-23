@@ -10,6 +10,8 @@ public enum WeaponType {
     private final String weaponTypeName;
     private final int baseDamage;
 
+    final Random random = new Random();
+
     WeaponType(String weaponTypeName, int baseDamage) {
         this.weaponTypeName = weaponTypeName;
         this.baseDamage = baseDamage;
@@ -41,11 +43,7 @@ public enum WeaponType {
     };
 
     public String getRandomCommonSwordName() {
-        Random random = new Random();
-        int min = 1;
-        int max = commonSwordNames.length;
-
-        int indexNum = random.nextInt(min, max);
+        int indexNum = random.nextInt(commonSwordNames.length);
         return commonSwordNames[indexNum];
     }
 }
