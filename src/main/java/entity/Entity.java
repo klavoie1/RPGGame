@@ -136,18 +136,6 @@ public abstract class Entity {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Entity entity = (Entity) o;
-        return getCurrentHealth() == entity.getCurrentHealth() && getMaxHealth() == entity.getMaxHealth() && getBaseDefense() == entity.getBaseDefense() && getCurrentMana() == entity.getCurrentMana() && getMaxMana() == entity.getMaxMana() && getCurrentStamina() == entity.getCurrentStamina() && getMaxStamina() == entity.getMaxStamina() && Objects.equals(getName(), entity.getName()) && getClassType() == entity.getClassType() && getRace() == entity.getRace();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName(), getClassType(), getRace(), getCurrentHealth(), getMaxHealth(), getBaseDefense(), getCurrentMana(), getMaxMana(), getCurrentStamina(), getMaxStamina());
-    }
-
-    @Override
     public String toString() {
         return "Entity{" +
                 "name='" + name + '\'' +
