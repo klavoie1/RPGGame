@@ -8,7 +8,6 @@ public final class Prompts {
 
     private Prompts() {}
 
-
     /**
      * Prompt for the player character to change their current weapons name.
      */
