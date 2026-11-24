@@ -11,11 +11,9 @@ public class Weapon extends Item {
 
     public Weapon(String label, ItemRarity itemRarity, WeaponType weaponType) {
         super(label, itemRarity);
-        if (label == null || label.isBlank()) throw new IllegalArgumentException("Must have a label!");
-        if (itemRarity == null) throw new IllegalArgumentException("Weapon must have a rarity!");
         if (weaponType == null) throw new IllegalArgumentException("Weapon must have a type!");
         this.weaponType = weaponType;
-        setWeaponName(giveWeaponARandomName());
+        this.weaponName = randomName(weaponType, itemRarity);
     }
 
     public WeaponType getWeaponType() { return weaponType; }
@@ -24,13 +22,10 @@ public class Weapon extends Item {
 
     public int weaponDamage() { return getItemRarity().getAddition() + weaponType.getBaseDamage(); }
 
-    public String giveWeaponARandomName() {
-        if (weaponType == WeaponType.SWORD && getItemRarity() == ItemRarity.COMMON) {
-            setWeaponName(WeaponType.SWORD.getRandomCommonSwordName());
-        } else {
-            setWeaponName("Missed");
-        }
-        return weaponName;
+    private static String randomName(WeaponType weaponType, ItemRarity itemRarity) {
+        if (weaponType == WeaponType.SWORD && itemRarity == ItemRarity.COMMON)
+            return WeaponNameGenerator.getRandomCommonSwordName();
+        return "Missed";
     }
 
     @Override

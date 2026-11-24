@@ -82,20 +82,6 @@ public abstract class Entity {
         this.currentMana = Math.clamp(currentMana, 0, maxMana);
     }
 
-    private void setCurrentStamina(int currentStamina) { this.currentStamina = Math.clamp(currentStamina, 0, maxStamina); }
-
-    private void setMaxHealth(int maxHealth) {
-        this.maxHealth = maxHealth;
-    }
-
-    private void setMaxMana(int maxMana) {
-        this.maxMana = maxMana;
-    }
-
-    private void setMaxStamina(int maxStamina) {
-        this.maxStamina = maxStamina;
-    }
-
     public void takeDamage(int amount) {
         if (amount < 0) throw new IllegalArgumentException("Damage must be at least 0!");
         int damage = Math.max((amount - getBaseDefense()), 0);
@@ -122,15 +108,28 @@ public abstract class Entity {
 
     public boolean spendMana(int amount) {
         if (amount < 0) throw new IllegalArgumentException("Cannot spend negative mana!");
+        if (isDead() || currentMana < amount) return false;
+        setCurrentMana(currentMana - amount);
+        return true;
+    }
 
-        if (isDead()) return false;
-
-        if (getCurrentMana() < amount) {
-            return false;
-        } else {
-            setCurrentMana(getCurrentMana() - amount);
-            return true;
-        }
+    /**
+     * @return Statistics menu for the entity character
+     */
+    public String getStatsDisplay() {
+        return (
+                "-------------------------\n" +
+                        "| Name: " + this.getName() + "\n" +
+                        "| Race: " + this.getRace().getRaceName() + "\n" +
+                        "| Class: " + this.getClassType().getClassName() + "\n" +
+                        "|-------------------------\n" +
+                        "| Health:  " + this.getCurrentHealth() + " / " + this.getMaxHealth() + "\n"+
+                        "| Stamina: " + this.getCurrentStamina() + " / " + this.getMaxStamina() + "\n" +
+                        "| Mana:    " + this.getCurrentMana() + " / " + this.getMaxMana()+ "\n" +
+                        "| Base Defense: " + this.getBaseDefense() + "\n" +
+                        "| Total Defense: " + "TBD\n" +
+                        "-------------------------\n"
+        );
     }
 
     @Override

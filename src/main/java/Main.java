@@ -1,11 +1,15 @@
+import entity.Enemy;
 import entity.Player;
 import item.Weapon;
+import ui.Prompts;
 
 import java.util.Scanner;
 
 import static enums.ClassType.MAGE;
+import static enums.ClassType.WARRIOR;
 import static enums.ItemRarity.COMMON;
 import static enums.Race.HUMAN;
+import static enums.Race.ORC;
 import static enums.WeaponType.SWORD;
 
 class Main {
@@ -19,10 +23,11 @@ class Main {
 
         Weapon weapon = new Weapon("Sword_1", COMMON, SWORD);
         Player player = new Player(playerName, HUMAN, MAGE);
+        Enemy enemy = new Enemy("Orc Warrior", ORC, WARRIOR);
 
         player.takeDamage(weapon.weaponDamage());
 
-        System.out.println(player.playerStats());
+        System.out.println(player.getStatsDisplay());
 
         System.out.println(player.getName() + " was hit, health now " + player.getCurrentHealth());
 
@@ -36,26 +41,14 @@ class Main {
 
         System.out.println(weapon.weaponDamage());
 
-        System.out.println(player.playerStats());
+        System.out.println(player.getStatsDisplay());
 
         System.out.println(weapon.toString());
 
-        givePlayerSwordNameFromPlayer(scanner, weapon);
+        Prompts.givePlayerSwordNameFromPlayer(scanner, weapon);
 
         System.out.println(weapon.toString());
-    }
 
-    public static void givePlayerSwordNameFromPlayer(Scanner scn, Weapon weapon) {
-        System.out.println("Would you Like to give your weapon a name?");
-        System.out.print("Y/N: ");
-        String response = scn.nextLine();
-        if (response.equalsIgnoreCase("y")) {
-            System.out.print("What would you like to name your weapon?: ");
-            String newWeaponName = scn.nextLine();
-            System.out.println("Your weapons new name is " + newWeaponName);
-            weapon.setWeaponName(newWeaponName);
-        } else {
-            System.out.println("You have decided to not name your weapon.");
-        }
+        System.out.println(enemy.getStatsDisplay());
     }
 }
