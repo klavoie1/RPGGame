@@ -12,7 +12,7 @@ public class Weapon extends Item {
     public Weapon(ItemRarity itemRarity, WeaponType weaponType) {
         super(labelFor(weaponType), itemRarity);
         this.weaponType = weaponType;
-        this.weaponName = randomName(weaponType, itemRarity);
+        this.weaponName = WeaponNameGenerator.randomName(weaponType, itemRarity);
     }
 
     public WeaponType getWeaponType() { return weaponType; }
@@ -25,12 +25,6 @@ public class Weapon extends Item {
     private static String labelFor(WeaponType weaponType) {
         if (weaponType == null) throw new IllegalArgumentException("Weapon must have a type!");
         return weaponType.getTypeName();
-    }
-
-    private static String randomName(WeaponType weaponType, ItemRarity itemRarity) {
-        if (weaponType == WeaponType.SWORD && itemRarity == ItemRarity.COMMON)
-            return WeaponNameGenerator.getRandomCommonSwordName();
-        return "Missed";
     }
 
     @Override

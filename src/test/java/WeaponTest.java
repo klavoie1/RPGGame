@@ -2,6 +2,8 @@ import enums.ItemRarity;
 import enums.WeaponType;
 import item.Weapon;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -25,6 +27,17 @@ class WeaponTest {
         String name = new Weapon(ItemRarity.COMMON, WeaponType.SWORD).getWeaponName();
         assertNotNull(name);
         assertTrue(name.endsWith("Sword"), name);
+    }
+
+    @Test
+    void uncommonSwordGetsAnUncommonName() {
+        String name = new Weapon(ItemRarity.UNCOMMON, WeaponType.SWORD).getWeaponName();
+        assertTrue(List.of("Steel Sword", "Silver Sword", "Refined Steel Sword").contains(name), name);
+    }
+
+    @Test
+    void weaponWithoutNameListFallsBackToTypeName() {
+        assertEquals("Axe", new Weapon(ItemRarity.LEGENDARY, WeaponType.AXE).getWeaponName());
     }
 
     @ParameterizedTest
