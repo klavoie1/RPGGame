@@ -21,7 +21,7 @@ class Main {
         System.out.print("Enter your name: ");
         playerName = scanner.nextLine();
 
-        Weapon weapon = new Weapon("Sword_1", COMMON, SWORD);
+        Weapon weapon = new Weapon(COMMON, SWORD);
         Player player = new Player(playerName, HUMAN, MAGE);
         Enemy enemy = new Enemy("Orc Warrior", ORC, WARRIOR);
 

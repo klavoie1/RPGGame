@@ -1,6 +1,6 @@
 package enums;
 
-public enum WeaponType{
+public enum WeaponType {
     SWORD("Sword", 5),
     AXE("Axe", 3),
     BOW("Bow", 4);
@@ -13,7 +13,7 @@ public enum WeaponType{
         this.baseDamage = baseDamage;
     }
 
-    public String getWeaponName() {
+    public String getTypeName() {
         return weaponTypeName;
     }
 

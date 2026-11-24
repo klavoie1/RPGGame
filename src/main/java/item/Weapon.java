@@ -9,9 +9,8 @@ public class Weapon extends Item {
 
     private final WeaponType weaponType;
 
-    public Weapon(String label, ItemRarity itemRarity, WeaponType weaponType) {
-        super(label, itemRarity);
-        if (weaponType == null) throw new IllegalArgumentException("Weapon must have a type!");
+    public Weapon(ItemRarity itemRarity, WeaponType weaponType) {
+        super(labelFor(weaponType), itemRarity);
         this.weaponType = weaponType;
         this.weaponName = randomName(weaponType, itemRarity);
     }
@@ -22,6 +21,12 @@ public class Weapon extends Item {
 
     public int weaponDamage() { return getItemRarity().getAddition() + weaponType.getBaseDamage(); }
 
+    /** The label is what the weapon is, e.g. "Sword". Checked here because it runs before super(). */
+    private static String labelFor(WeaponType weaponType) {
+        if (weaponType == null) throw new IllegalArgumentException("Weapon must have a type!");
+        return weaponType.getTypeName();
+    }
+
     private static String randomName(WeaponType weaponType, ItemRarity itemRarity) {
         if (weaponType == WeaponType.SWORD && itemRarity == ItemRarity.COMMON)
             return WeaponNameGenerator.getRandomCommonSwordName();
@@ -31,7 +36,8 @@ public class Weapon extends Item {
     @Override
     public String toString() {
         return "Weapon{" +
-                "weaponName='" + weaponName + '\'' +
+                "label='" + getLabel() + '\'' +
+                ", weaponName='" + weaponName + '\'' +
                 ", weaponType=" + weaponType +
                 '}';
     }

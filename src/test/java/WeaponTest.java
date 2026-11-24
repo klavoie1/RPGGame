@@ -17,27 +17,32 @@ class WeaponTest {
             "BOW,   COMMON,    4", "BOW,   UNCOMMON,  5", "BOW,   RARE,      6", "BOW,   LEGENDARY, 7"
     })
     void damageIsBasePlusRarityBonus(WeaponType type, ItemRarity rarity, int expected) {
-        assertEquals(expected, new Weapon("Test", rarity, type).weaponDamage());
+        assertEquals(expected, new Weapon(rarity, type).weaponDamage());
     }
 
     @Test
     void commonSwordGetsARandomName() {
-        String name = new Weapon("Test", ItemRarity.COMMON, WeaponType.SWORD).getWeaponName();
+        String name = new Weapon(ItemRarity.COMMON, WeaponType.SWORD).getWeaponName();
         assertNotNull(name);
         assertTrue(name.endsWith("Sword"), name);
     }
 
+    @ParameterizedTest
+    @CsvSource({"SWORD, Sword", "AXE, Axe", "BOW, Bow"})
+    void labelComesFromWeaponType(WeaponType type, String expectedLabel) {
+        assertEquals(expectedLabel, new Weapon(ItemRarity.COMMON, type).getLabel());
+    }
+
     @Test
     void canBeRenamed() {
-        Weapon weapon = new Weapon("Test", ItemRarity.COMMON, WeaponType.SWORD);
+        Weapon weapon = new Weapon(ItemRarity.COMMON, WeaponType.SWORD);
         weapon.setWeaponName("Excalibur");
         assertEquals("Excalibur", weapon.getWeaponName());
     }
 
     @Test
     void rejectsMissingFields() {
-        assertThrows(IllegalArgumentException.class, () -> new Weapon(" ", ItemRarity.COMMON, WeaponType.SWORD));
-        assertThrows(IllegalArgumentException.class, () -> new Weapon("Test", null, WeaponType.SWORD));
-        assertThrows(IllegalArgumentException.class, () -> new Weapon("Test", ItemRarity.COMMON, null));
+        assertThrows(IllegalArgumentException.class, () -> new Weapon(null, WeaponType.SWORD));
+        assertThrows(IllegalArgumentException.class, () -> new Weapon(ItemRarity.COMMON, null));
     }
 }
