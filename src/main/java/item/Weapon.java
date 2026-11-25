@@ -12,7 +12,7 @@ public class Weapon extends Item {
     public Weapon(ItemRarity itemRarity, WeaponType weaponType) {
         super(labelFor(weaponType), itemRarity);
         this.weaponType = weaponType;
-        this.weaponName = WeaponNameGenerator.randomName(weaponType, itemRarity);
+        this.weaponName = WeaponNames.POOL.randomName(weaponType, itemRarity);
     }
 
     public WeaponType getWeaponType() { return weaponType; }
