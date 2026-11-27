@@ -37,7 +37,7 @@ class WeaponTest {
 
     @Test
     void weaponWithoutNameListFallsBackToTypeName() {
-        assertEquals("Axe", new Weapon(ItemRarity.LEGENDARY, WeaponType.AXE).getWeaponName());
+        assertEquals("Bow", new Weapon(ItemRarity.LEGENDARY, WeaponType.BOW).getWeaponName());
     }
 
     @ParameterizedTest
