@@ -5,7 +5,7 @@ import enums.Race;
 
 public class Player extends Entity {
      public Player(String name, Race race, ClassType classType) {
-         super(name, race, classType);
+         super(name, race, classType, 0);
      }
 }
 

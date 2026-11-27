@@ -9,23 +9,24 @@ public abstract class Entity {
     private final ClassType classType;
     private final Race race;
     private int currentHealth;
-    private int maxHealth;
+    private final int maxHealth;
     private final int baseDefense;
     private int currentMana;
-    private int maxMana;
-    private int currentStamina;
-    private int maxStamina;
+    private final int maxMana;
+    private final int currentStamina;
+    private final int maxStamina;
 
-    protected Entity(String name, Race race, ClassType classType) {
+    protected Entity(String name, Race race, ClassType classType, int bonusHealth) {
 
         if (name == null || name.isBlank()) throw new IllegalArgumentException("Name cannot be null or blank!");
         if (race == null) throw new IllegalArgumentException("Race cannot be null!");
         if (classType == null) throw new IllegalArgumentException("ClassType cannot be null!");
+        if (bonusHealth < 0) throw new IllegalArgumentException("bonusHealth cannot be negative");
 
         this.name = name;
         this.race = race;
         this.classType = classType;
-        this.maxHealth = race.getInnateHealth() + classType.getStartingHealth();
+        this.maxHealth = race.getInnateHealth() + classType.getStartingHealth() + bonusHealth;
         this.currentHealth = maxHealth;
         this.baseDefense = race.getInnateDefense();
         this.maxStamina = race.getInnateStamina() + classType.getStartingStamina();

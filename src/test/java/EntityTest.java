@@ -1,5 +1,7 @@
+import entity.Enemy;
 import entity.Player;
 import enums.ClassType;
+import enums.EnemyRank;
 import enums.Race;
 
 import org.junit.jupiter.api.Test;
@@ -105,5 +107,29 @@ class EntityTest {
         assertThrows(IllegalArgumentException.class, () -> new Player(" ", Race.HUMAN, ClassType.MAGE));
         assertThrows(IllegalArgumentException.class, () -> new Player("Test", null, ClassType.MAGE));
         assertThrows(IllegalArgumentException.class, () -> new Player("Test", Race.HUMAN, null));
+        assertThrows(IllegalArgumentException.class, () -> new Enemy("Orc Boss", Race.ORC, ClassType.WARRIOR, null));
+    }
+
+    @Test
+    void higherRankEnemyHasMoreHealth() {
+        Enemy bossEnemy = new Enemy("Orc Boss", Race.ORC, ClassType.WARRIOR, EnemyRank.BOSS);
+        Enemy normalEnemy = new Enemy("Orc Warrior", Race.ORC, ClassType.WARRIOR, EnemyRank.NORMAL);
+
+        int normalHealth = normalEnemy.getMaxHealth();
+        int bossHealth = bossEnemy.getMaxHealth();
+        int healthDifference = bossHealth - normalHealth;
+        int expectedDifference = EnemyRank.BOSS.getStartingHealthAddition() - EnemyRank.NORMAL.getStartingHealthAddition();
+
+        assertEquals(expectedDifference, healthDifference);
+
+    }
+
+    @Test
+    void highRankEnemyStartsFullHealth() {
+        Enemy bossEnemy = new Enemy("Orc Boss", Race.ORC, ClassType.WARRIOR, EnemyRank.BOSS);
+        int bossMaxHealth = bossEnemy.getMaxHealth();
+        int bossCurrentHealth = bossEnemy.getCurrentHealth();
+
+        assertEquals(bossMaxHealth, bossCurrentHealth);
     }
 }

@@ -14,9 +14,7 @@ public abstract class Item {
         this.itemRarity = itemRarity;
     }
 
-    public String getLabel() {
-        return label;
-    }
+    public String getLabel() { return label; }
 
     public ItemRarity getItemRarity() {
         return itemRarity;
